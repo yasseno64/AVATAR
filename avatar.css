@@ -15,17 +15,20 @@ body{
     justify-content: center;
     align-items: center;
 }
-.container{
+.container {
     background-image: 
-    linear-gradient(to right, #01022de5 30%, #00000088),
-    url(download.webp)
-    
-    ;
+        linear-gradient(to right, #01022de5 30%, #00000088),
+        url(download.webp);
+
     background-position: center;
+    background-size: cover;
+
     width: 90%;
     height: 640px;
     overflow: hidden;
     background-repeat: no-repeat;
+
+    transition: background-position 0.15s ease;
 }
 .container:hover{
     background-image: 
