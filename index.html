@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,7 +80,7 @@
 
 
         /* =========================
-           LIGHT IMAGE
+           LIGHT IMAGE / CIRCLE
         ========================= */
 
         .light-image {
@@ -94,16 +95,27 @@
             background-repeat: no-repeat;
 
             /*
-                الدائرة التي تكشف الصورة الأصلية
+                الدائرة مخفية في البداية
             */
 
             clip-path: circle(
                 180px at var(--mouse-x) var(--mouse-y)
             );
 
+            opacity: 0;
+
             pointer-events: none;
 
-            transition: clip-path 0.05s linear;
+            transition: opacity 0.3s ease;
+        }
+
+
+        /*
+            تظهر الدائرة عند الـ hover
+        */
+
+        .container:hover .light-image {
+            opacity: 1;
         }
 
 
@@ -226,7 +238,7 @@
         <!-- الصورة الغامقة -->
         <div class="normal-image"></div>
 
-        <!-- الصورة الأصلية التي تظهر داخل الدائرة -->
+        <!-- الصورة الأصلية داخل الدائرة -->
         <div class="light-image"></div>
 
 
@@ -292,15 +304,15 @@
             document.querySelector(".container");
 
 
+        /* =========================
+           حركة الدائرة مع الماوس
+        ========================= */
+
         container.addEventListener("mousemove", (e) => {
 
             const rect =
                 container.getBoundingClientRect();
 
-
-            /*
-                مكان الماوس داخل الـ container
-            */
 
             const x =
                 e.clientX - rect.left;
@@ -308,10 +320,6 @@
             const y =
                 e.clientY - rect.top;
 
-
-            /*
-                إرسال مكان الماوس إلى CSS
-            */
 
             container.style.setProperty(
                 "--mouse-x",
@@ -326,10 +334,9 @@
         });
 
 
-        /*
-            لما الماوس يخرج من الصورة
-            ترجع الدائرة للمنتصف
-        */
+        /* =========================
+           عند خروج الماوس
+        ========================= */
 
         container.addEventListener("mouseleave", () => {
 
@@ -350,3 +357,4 @@
 </body>
 
 </html>
+```
