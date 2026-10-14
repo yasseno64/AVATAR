@@ -1,49 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>AVATAR</title>
-    <link rel="stylesheet" href="avatar.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital@0;1&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        * {
+            font-family: "Ubuntu", sans-serif;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            color: aliceblue;
+            text-decoration: none;
+        }
+
+        body {
+            background-image: linear-gradient(to right, #01022d, #000);
+
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            position: relative;
+
+            width: 90%;
+            height: 640px;
+
+            overflow: hidden;
+
+            --mouse-x: 50%;
+            --mouse-y: 50%;
+        }
+
+
+        /* =========================
+           DARK IMAGE
+        ========================= */
+
+        .normal-image {
+            position: absolute;
+
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    to right,
+                    #01022de5 30%,
+                    #00000088
+                ),
+                url(download.webp);
+
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+
+        /* =========================
+           LIGHT IMAGE
+        ========================= */
+
+        .light-image {
+            position: absolute;
+
+            inset: 0;
+
+            background-image: url(download.webp);
+
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            /*
+                الدائرة التي تكشف الصورة الأصلية
+            */
+
+            clip-path: circle(
+                180px at var(--mouse-x) var(--mouse-y)
+            );
+
+            pointer-events: none;
+
+            transition: clip-path 0.05s linear;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: relative;
+
+            z-index: 5;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 10px;
+        }
+
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .logo {
+            font-size: 30px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        ul {
+            width: 60%;
+
+            list-style: none;
+
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        ul a {
+            border: 2px solid transparent;
+
+            padding-bottom: 5px;
+        }
+
+        ul a:hover {
+            border-bottom-color: whitesmoke;
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+            position: relative;
+
+            z-index: 5;
+
+            color: white;
+
+            width: 50%;
+
+            margin-top: 50px;
+
+            padding: 30px;
+        }
+
+        .content h2 {
+            font-size: 100px;
+
+            text-transform: uppercase;
+        }
+
+        .content p {
+            letter-spacing: 2px;
+
+            width: 350px;
+
+            padding: 20px 0;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .content button {
+            font-size: 30px;
+
+            padding: 6px 10px;
+
+            border-radius: 10px;
+
+            border: 2px solid transparent;
+
+            cursor: pointer;
+        }
+
+        .content button:hover {
+            background-color: transparent;
+
+            border-color: white;
+
+            color: white;
+        }
+    </style>
 </head>
+
+
 <body>
+
     <div class="container">
+
+        <!-- الصورة الغامقة -->
+        <div class="normal-image"></div>
+
+        <!-- الصورة الأصلية التي تظهر داخل الدائرة -->
+        <div class="light-image"></div>
+
+
+        <!-- HEADER -->
         <header>
-            <a href="#" class="logo">AVATAR</a>
+
+            <a href="#" class="logo">
+                AVATAR
+            </a>
+
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Clans</a></li>
-                <li><a href="#">Videos</a></li>
-                <li><a href="#">Photos</a></li>
-                <li><a href="#">About</a></li>
-                
+                <li>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">Clans</a>
+                </li>
+
+                <li>
+                    <a href="#">Videos</a>
+                </li>
+
+                <li>
+                    <a href="#">Photos</a>
+                </li>
+
+                <li>
+                    <a href="#">About</a>
+                </li>
             </ul>
+
         </header>
+
+
+        <!-- CONTENT -->
         <div class="content">
-            <h2>avatar</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla voluptatum odio aut id! Eaque possimus, id exercitationem inventore perferendis impedit quo! Laborum tempore ad impedit possimus quae, assumenda laudantium velit?</p>
-            <button>Click Here</button>
+
+            <h2>
+                avatar
+            </h2>
+
+            <p>
+                Lorem ipsum dolor sit amet consectetur,
+                adipisicing elit. Nulla voluptatum odio aut id!
+                Eaque possimus, id exercitationem inventore
+                perferendis impedit quo! Laborum tempore ad
+                impedit possimus quae, assumenda laudantium velit?
+            </p>
+
+            <button>
+                Click Here
+            </button>
+
         </div>
+
     </div>
+
+
     <script>
-    const container = document.querySelector(".container");
 
-    container.addEventListener("mousemove", (e) => {
-        const rect = container.getBoundingClientRect();
+        const container =
+            document.querySelector(".container");
 
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
 
-        const moveX = (x / rect.width - 0.5) * 30;
-        const moveY = (y / rect.height - 0.5) * 30;
+        container.addEventListener("mousemove", (e) => {
 
-        container.style.backgroundPosition =
-            `calc(50% + ${moveX}px) calc(50% + ${moveY}px)`;
-    });
+            const rect =
+                container.getBoundingClientRect();
 
-    container.addEventListener("mouseleave", () => {
-        container.style.backgroundPosition = "center";
-    });
-</script>
+
+            /*
+                مكان الماوس داخل الـ container
+            */
+
+            const x =
+                e.clientX - rect.left;
+
+            const y =
+                e.clientY - rect.top;
+
+
+            /*
+                إرسال مكان الماوس إلى CSS
+            */
+
+            container.style.setProperty(
+                "--mouse-x",
+                `${x}px`
+            );
+
+            container.style.setProperty(
+                "--mouse-y",
+                `${y}px`
+            );
+
+        });
+
+
+        /*
+            لما الماوس يخرج من الصورة
+            ترجع الدائرة للمنتصف
+        */
+
+        container.addEventListener("mouseleave", () => {
+
+            container.style.setProperty(
+                "--mouse-x",
+                "50%"
+            );
+
+            container.style.setProperty(
+                "--mouse-y",
+                "50%"
+            );
+
+        });
+
+    </script>
+
 </body>
+
 </html>
